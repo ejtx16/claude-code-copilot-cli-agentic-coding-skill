@@ -2,6 +2,8 @@
 
 A plugin for AI coding assistants (Claude Code and GitHub Copilot CLI). Point it at any repo and it sets up everything the AI needs to work there safely: project docs for the AI to read, a safety guard, and a couple of helpers.
 
+**Not a developer?** [Read the plain-English overview](https://claude.ai/code/artifact/40264c5b-bd89-4685-bc5c-1903c4e1b815) - what this sets up and what it stops the AI from doing, no jargon.
+
 **New to this?** A quick glossary:
 - **Plugin** - a package you install once that adds new abilities to your AI tool.
 - **Skill** - a task the AI can run, written as instructions it follows step by step.
