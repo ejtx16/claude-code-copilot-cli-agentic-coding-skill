@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "node .claude/hooks/prompt-guard.js --copilot",
+        "powershell": "node .claude/hooks/prompt-guard.js --copilot",
+        "timeoutSec": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "node .claude/hooks/guard.js --copilot",
+        "powershell": "node .claude/hooks/guard.js --copilot",
+        "timeoutSec": 10
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "bash": "node .claude/hooks/activity-logger.js --copilot",
+        "powershell": "node .claude/hooks/activity-logger.js --copilot",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}

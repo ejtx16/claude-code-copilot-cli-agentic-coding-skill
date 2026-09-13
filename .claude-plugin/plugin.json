@@ -1,0 +1,8 @@
+{
+  "name": "agent-scaffold",
+  "description": "Scaffold AI-agent config for a repo: instructions (tech-stack, design-notes, requirements), guard hooks (deny secrets and force-push, ask on deletes), frontend/backend skills, a git-reconciler sub-agent, and CLAUDE.md/AGENTS.md. Targets Claude Code and GitHub Copilot CLI.",
+  "version": "0.1.0",
+  "author": { "name": "James Tomes Platino" },
+  "license": "MIT",
+  "keywords": ["scaffold", "hooks", "guard", "copilot-cli", "claude-code", "agents"]
+}

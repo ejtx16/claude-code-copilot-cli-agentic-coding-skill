@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-scaffold-local",
+  "description": "Local marketplace exposing the agent-scaffold plugin.",
+  "owner": { "name": "James Tomes Platino" },
+  "plugins": [
+    {
+      "name": "agent-scaffold",
+      "description": "Scaffold instructions, guard hooks, skills, sub-agents and CLAUDE.md/AGENTS.md for Claude Code and Copilot CLI.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-scaffold",
+  "version": "0.1.0",
+  "description": "Scaffold AI-agent config for a repo: instructions, guard hooks, frontend/backend skills, git-reconciler sub-agent, CLAUDE.md/AGENTS.md. Targets Claude Code and GitHub Copilot CLI.",
+  "author": { "name": "James Tomes Platino" },
+  "license": "MIT",
+  "keywords": ["scaffold", "hooks", "guard", "copilot-cli", "claude-code", "agents"]
+}

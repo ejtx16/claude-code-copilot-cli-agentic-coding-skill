@@ -1,0 +1,119 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/id_rsa)",
+      "Read(**/id_ed25519)",
+      "Read(**/.npmrc)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f)",
+      "Bash(git push * -f *)",
+      "Bash(git reset --hard:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git filter-repo:*)",
+      "Bash(git update-ref -d:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
+      "Bash(rm -r:*)",
+      "Bash(rm -R:*)",
+      "Bash(dd if=*)",
+      "Bash(mkfs:*)",
+      "Bash(shred:*)",
+      "Bash(aws s3 rb:*)",
+      "PowerShell(Remove-Item * -Recurse*)",
+      "PowerShell(git push --force:*)",
+      "PowerShell(git push -f:*)",
+      "PowerShell(git reset --hard:*)",
+      "mcp__plugin_mongodb_mongodb__drop-database",
+      "mcp__plugin_mongodb_mongodb__drop-collection",
+      "mcp__plugin_mongodb_mongodb__atlas-local-delete-deployment"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(del:*)",
+      "Bash(unlink:*)",
+      "Bash(git branch -D:*)",
+      "Bash(git branch -d:*)",
+      "Bash(git clean:*)",
+      "Bash(git checkout -- *)",
+      "Bash(git restore:*)",
+      "Bash(git rm:*)",
+      "Bash(git add -A:*)",
+      "Bash(git stash drop:*)",
+      "Bash(git stash clear:*)",
+      "Bash(aws s3 rm:*)",
+      "Bash(truncate:*)",
+      "Bash(mongosh:*)",
+      "Bash(mongo:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(sqlite3:*)",
+      "PowerShell(Remove-Item:*)",
+      "PowerShell(rm:*)",
+      "PowerShell(del:*)",
+      "PowerShell(rd:*)",
+      "PowerShell(Clear-Content:*)",
+      "mcp__plugin_mongodb_mongodb__delete-many",
+      "mcp__plugin_mongodb_mongodb__update-many",
+      "mcp__plugin_mongodb_mongodb__drop-index",
+      "mcp__plugin_mongodb_mongodb__rename-collection"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell|Edit|Write|MultiEdit|NotebookEdit|Read|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt-guard.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/activity-logger.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
